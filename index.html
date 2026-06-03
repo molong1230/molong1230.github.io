@@ -2,69 +2,316 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <title>個人網站 | 黃士弦</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="黃士弦的個人網站 — 元智大學資工系 CS351 課程作品展示">
+  <title>黃士弦 | 個人網站</title>
   <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: linear-gradient(135deg, #4e73df, #1cc88a);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+    :root {
+      --primary: #4e73df;
+      --accent: #1cc88a;
+      --text: #2d3748;
+      --muted: #64748b;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --radius: 12px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
 
-    .card {
-      background: white;
-      width: 420px;
-      padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Microsoft JhengHei", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      padding: 3rem 1.5rem 4rem;
       text-align: center;
     }
 
-    .card h1 {
-      margin-bottom: 10px;
-      color: #333;
+    header h1 {
+      margin: 0 0 0.5rem;
+      font-size: 2rem;
     }
 
-    .info {
-      margin: 15px 0;
-      font-size: 16px;
-      color: #555;
-      line-height: 1.8;
+    header p {
+      margin: 0.25rem 0;
+      opacity: 0.95;
     }
 
-    .description {
-      margin-top: 20px;
-      font-size: 15px;
-      color: #666;
+    .badge {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.35rem 0.85rem;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      font-size: 0.9rem;
     }
 
-    .highlight {
-      color: #4e73df;
-      font-weight: bold;
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--card);
+      border-bottom: 1px solid #e2e8f0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0 auto;
+      padding: 0.75rem 1rem;
+      max-width: 960px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.25rem;
+      justify-content: center;
+    }
+
+    nav a {
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 3rem;
+    }
+
+    section {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.75rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    section h2 {
+      margin-top: 0;
+      color: var(--primary);
+      font-size: 1.35rem;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 0.5rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .grid-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .project-card {
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+    }
+
+    .project-card h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .project-card h3 a {
+      color: inherit;
+    }
+
+    .project-card h3 a:hover {
+      color: var(--primary);
+    }
+
+    .repo-link {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-weight: 600;
+    }
+
+    .tag {
+      display: inline-block;
+      margin: 0.15rem 0.35rem 0.15rem 0;
+      padding: 0.2rem 0.55rem;
+      background: #eef2ff;
+      color: var(--primary);
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+
+    ul.compact {
+      padding-left: 1.2rem;
+      margin: 0.5rem 0 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      justify-content: center;
+      margin-top: 0.75rem;
+    }
+
+    .links a {
+      font-weight: 600;
     }
   </style>
 </head>
-
 <body>
-  <div class="card">
+  <header>
     <h1>黃士弦</h1>
-    
-    <div class="info">
-      <p><span class="highlight">學號：</span>1113344</p>
-      <p><span class="highlight">學校：</span>元智大學</p>
-      <p><span class="highlight">科系：</span>資訊工程學系</p>
-    </div>
+    <p>元智大學 · 資訊工程學系</p>
+    <p>學號 s1113344 · GitHub <a href="https://github.com/molong1230" style="color:#fff;text-decoration:underline;">molong1230</a></p>
+    <span class="badge">CS351 軟體工程 — 個人網站 &amp; 課程作品展示</span>
+  </header>
 
-    <div class="description">
+  <nav aria-label="主要導覽">
+    <ul>
+      <li><a href="#about">關於我</a></li>
+      <li><a href="#tech">使用技術</a></li>
+      <li><a href="#design">設計理念</a></li>
+      <li><a href="#projects">課程專案</a></li>
+      <li><a href="#future">未來規劃</a></li>
+      <li><a href="#ai">AI 輔助開發</a></li>
+      <li><a href="#links">相關連結</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="about">
+      <h2>關於我</h2>
       <p>
-        目前就讀資訊工程學系，對寫程式和新科技很有興趣。
-        課餘時間會自己練習寫程式或嘗試做些小作品，
-        還在學習中，希望慢慢累積實力。
+        目前就讀資訊工程學系，對寫程式與新科技很有興趣。課餘時間會練習寫程式、做小作品，
+        並透過 Git / GitHub 管理版本與課程作業。這個網站使用
+        <strong>GitHub Pages</strong> 發布，作為 CS351 作業與期末展示用的個人首頁。
       </p>
-    </div>
-  </div>
+    </section>
+
+    <section id="tech">
+      <h2>使用技術</h2>
+      <div class="grid grid-2">
+        <div>
+          <p><strong>網站</strong></p>
+          <span class="tag">HTML5</span>
+          <span class="tag">CSS3</span>
+          <span class="tag">GitHub Pages</span>
+        </div>
+        <div>
+          <p><strong>課程專案（C++）</strong></p>
+          <span class="tag">C++20</span>
+          <span class="tag">CMake</span>
+          <span class="tag">GitHub Actions</span>
+          <span class="tag">ctest</span>
+          <span class="tag">Docker</span>
+        </div>
+      </div>
+      <p style="margin-top:1rem;color:var(--muted);font-size:0.95rem;">
+        個人網站採靜態單頁架構；Two Sum 與 CSV 查詢引擎以 CMake 建置，並透過 CI 自動跑測試。
+      </p>
+    </section>
+
+    <section id="design">
+      <h2>設計理念</h2>
+      <ul class="compact">
+        <li><strong>簡潔可讀：</strong>以卡片式區塊與清楚標題，方便評分與展示時快速找到資訊。</li>
+        <li><strong>響應式版面：</strong>在手機與桌機都能正常瀏覽。</li>
+        <li><strong>品牌色調：</strong>藍綠漸層呼應元智／科技感，內文區維持白底與柔和陰影。</li>
+        <li><strong>可擴充：</strong>導覽列與專案區塊預留連結，方便持續更新 Two Sum、CSV Mini Database 等作業。</li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h2>課程專案</h2>
+      <p>
+        課程總覽與學習紀錄：
+        <a href="https://github.com/molong1230/11402_CS351" target="_blank" rel="noopener">11402_CS351</a>。
+        下列為各專案儲存庫，內含原始碼、測試與文件。
+      </p>
+      <div class="grid">
+        <article class="project-card">
+          <h3><a href="https://github.com/molong1230/11402_CS351_Project0" target="_blank" rel="noopener">Project 0：Two Sum</a></h3>
+          <p><strong>目標：</strong>在整數陣列中找出兩個索引，使其和等於目標值。</p>
+          <p><strong>演算法：</strong>實作 <code>twoSumArray</code>（暴力 O(n²)）與 <code>twoSumHashTable</code>（雜湊表平均 O(n)），並以 benchmark 比較效能。</p>
+          <p><strong>亮點：</strong>C++20 + CMake、單元測試（ctest）、GitHub Actions CI、Docker 建置驗證。</p>
+          <a class="repo-link" href="https://github.com/molong1230/11402_CS351_Project0" target="_blank" rel="noopener">查看儲存庫 →</a>
+        </article>
+        <article class="project-card">
+          <h3><a href="https://github.com/molong1230/11402_CS351_ProjectB" target="_blank" rel="noopener">Project B：CSV Mini Database</a></h3>
+          <p><strong>目標：</strong>以 CSV 為資料表，建置輕量查詢引擎，模擬從解析到執行的資料庫流程。</p>
+          <p><strong>功能：</strong>載入 CSV、解析 SQL-like 查詢（SELECT / WHERE / ORDER BY / LIMIT、聚合），透過 <code>csvdb_cli</code> 輸出結果。</p>
+          <p><strong>亮點：</strong>完整軟體文件（SRS、SDS、測試計畫等）、模組化 C++ 架構、CI 自動測試。</p>
+          <a class="repo-link" href="https://github.com/molong1230/11402_CS351_ProjectB" target="_blank" rel="noopener">查看儲存庫 →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="future">
+      <h2>心得與未來改進</h2>
+      <ul class="compact">
+        <li>加入專案截圖、Demo GIF 或線上執行連結，讓展示更直觀。</li>
+        <li>將專案說明與 API 文件集中到 Sphinx <code>docs/</code>，與網站互相連結。</li>
+        <li>補上英文版或深色模式，提升可讀性與完整度。</li>
+        <li>持續整理 commit、branch、PR 紀錄，作為 GitHub workflow 的具體證據。</li>
+      </ul>
+    </section>
+
+    <section id="ai">
+      <h2>AI 輔助開發反思</h2>
+      <ul class="compact">
+        <li><strong>如何使用：</strong>在 Cursor 等工具中，以自然語言描述需求、請 AI 協助產生初稿與重構建議。</li>
+        <li><strong>AI 的幫助：</strong>加快 HTML/CSS 排版、README 撰寫、測試案例草稿與除錯方向整理。</li>
+        <li><strong>需要自行驗證：</strong>演算法正確性、測試是否通過、連結與學號是否正確、是否符合作業規格。</li>
+        <li><strong>學到的事：</strong>AI 適合當「加速器」，但版本控制、理解程式邏輯與口頭展示仍須自己掌握。</li>
+      </ul>
+    </section>
+
+    <section id="links">
+      <h2>相關連結</h2>
+      <div class="links">
+        <a href="https://github.com/molong1230" target="_blank" rel="noopener">GitHub 個人頁</a>
+        <a href="https://github.com/molong1230/11402_CS351" target="_blank" rel="noopener">課程總 repo 11402_CS351</a>
+        <a href="https://github.com/molong1230/11402_CS351_Project0" target="_blank" rel="noopener">Project 0 — Two Sum</a>
+        <a href="https://github.com/molong1230/11402_CS351_ProjectB" target="_blank" rel="noopener">Project B — CSV DB</a>
+        <a href="https://molong1230.github.io/" target="_blank" rel="noopener">本網站 (GitHub Pages)</a>
+        <a href="https://github.com/molong1230/molong1230.github.io" target="_blank" rel="noopener">網站原始碼</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 黃士弦 · 發布於 <a href="https://pages.github.com/">GitHub Pages</a></p>
+    <p>網站網址：<a href="https://molong1230.github.io/">https://molong1230.github.io/</a></p>
+  </footer>
 </body>
 </html>
